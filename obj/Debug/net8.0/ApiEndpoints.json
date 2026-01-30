@@ -1,0 +1,50 @@
+[
+  {
+    "ContainingType": "n8n_urilisSWA.Controllers.PDFController",
+    "Method": "HtmlToPdf",
+    "RelativePath": "html-to-pdf",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "html",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "n8n_urilisSWA.Controllers.PDFController",
+    "Method": "PedidosToPdf",
+    "RelativePath": "pedidos-to-pdf",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedidos",
+        "Type": "System.Collections.Generic.List\u00601[[n8n_urilisSWA.Models.Pedido, n8n_urilisSWA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "n8n_urilisSWA.Controllers.PDFController",
+    "Method": "PedidosToPdf",
+    "RelativePath": "productos-to-pdf",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedidos",
+        "Type": "System.Collections.Generic.List\u00601[[n8n_urilisSWA.Models.PedidoPdf, n8n_urilisSWA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

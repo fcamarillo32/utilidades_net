@@ -1,0 +1,6 @@
+@n8n_urilisSWA_HostAddress = http://localhost:5042
+
+GET {{n8n_urilisSWA_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\n8n_urilisSWA.props" />
+</Project>
