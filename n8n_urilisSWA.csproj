@@ -1,5 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+
+
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -18,11 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Dockerfile" />
+    <None Include="C:\Users\Fernando\Documents\Cursos\NET API\n8n_urilisSWA\.editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="C:\Users\Fernando\Documents\Cursos\NET API\n8n_urilisSWA\.editorconfig" />
+    <None Remove="Dockerfile" />
+    <None Remove=".dockerignore" />
   </ItemGroup>
+
 
 </Project>
