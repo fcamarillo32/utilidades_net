@@ -1,11 +1,23 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+﻿# ---------- Build stage ----------
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY . .
+
+# Copiar csproj y restaurar dependencias
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copiar el resto del código
+COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# ---------- Runtime stage ----------
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/publish .
+
+# Puerto que usará el contenedor
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
+
+COPY --from=build /app/publish .
+
 ENTRYPOINT ["dotnet", "n8n_urilisSWA.dll"]
