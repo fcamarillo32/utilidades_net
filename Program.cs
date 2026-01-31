@@ -1,34 +1,44 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.AspNetCore.HttpOverrides;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddControllers();
-
-// Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor |
+        ForwardedHeaders.XForwardedProto;
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
-// ⚡ Habilitar Swagger incluso fuera de Development para pruebas en Plesk
+app.UseForwardedHeaders();
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    // Ajusta el endpoint si tu app está en un subdirectorio
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API V1");
-    c.RoutePrefix = "swagger"; // Acceder en /swagger
+    c.RoutePrefix = "swagger";
 });
 
-// ⚡ HTTPS
-// Solo activar si Plesk tiene certificado. 
-// Si da problemas de 403/404, coméntalo temporalmente
-// app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); ❌ NO en contenedor
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
-// Mapear los controladores
 app.MapControllers();
-
-// ⚡ Si tu app está en un subdirectorio en Plesk, puedes usar:
-// app.UsePathBase("/miapp");
 
 app.Run();
