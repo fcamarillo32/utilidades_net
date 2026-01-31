@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Dockerfile" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="C:\Users\Fernando\Documents\Cursos\NET API\n8n_urilisSWA\.editorconfig" />
   </ItemGroup>
 
