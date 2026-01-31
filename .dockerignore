@@ -1,9 +1,31 @@
-﻿bin/
+# Directorios de compilación
+bin/
 obj/
-.git/
+
+# Visual Studio
 .vs/
 *.user
 *.suo
+
+# Archivos de publicación
+publish/
+
+# Archivos de configuración local
+appsettings.Development.json
+launchSettings.json
+
+# Git
+.git/
+.gitignore
+
+# Docker
 Dockerfile*
 docker-compose*
-README.md
+.dockerignore
+
+# Documentación
+*.md
+
+# Archivos temporales
+*.log
+*.tmp
